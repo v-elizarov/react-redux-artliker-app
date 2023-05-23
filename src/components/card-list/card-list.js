@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import CardItem from 'components/card-item'
 
 const CardList = () => {
