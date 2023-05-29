@@ -8,13 +8,13 @@ export default class WaifuService {
     getManyArts = async () => {
         try {
             const { data } = await axios
-                .get(this._apiBaseAlt, {
+                .get(this._apiBase, {
                     params: {
                         many: true,
                         is_nsfw: false
                     }
                 })
-            return data // .images
+            return data.images
                 .map(this._transformArt)
         } catch (error) {
             throw new Error(`BOOM!, received ${error}`)
