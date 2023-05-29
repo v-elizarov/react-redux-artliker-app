@@ -2,6 +2,7 @@
   "name": "react-redux-artliker-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://v-elizarov.github.io/react-redux-artliker-app/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
@@ -22,7 +23,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server -w server/data.json -p 3030"
+    "server": "json-server -w server/data.json -p 3030",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +47,7 @@
   },
   "devDependencies": {
     "concurrently": "^8.0.1",
+    "gh-pages": "^5.0.0",
     "json-server": "^0.17.3"
   }
 }
