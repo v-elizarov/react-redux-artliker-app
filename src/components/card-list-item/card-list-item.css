@@ -1,0 +1,20 @@
+.card-list-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-rounded {
+    border-radius: 100%;
+    padding: 10px 15px;
+}
+
+.btn-card-footer {
+    padding: 0 3px;
+    background: transparent;
+    border: none;
+}
+
+.btn-card-footer:hover {
+    background: transparent;
+    color: red;
+}

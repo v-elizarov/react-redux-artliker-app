@@ -14,7 +14,8 @@ export default class WaifuService {
                         is_nsfw: false
                     }
                 })
-            return data
+                console.log(data)
+            return data // .images
                 .map(this._transformArt)
         } catch (error) {
             throw new Error(`BOOM!, received ${error}`)
@@ -32,7 +33,7 @@ export default class WaifuService {
             id: art.image_id,
             dominantColor: art.dominant_color,
             artist: art.artist !== null ? art.artist.name : 'unknown',
-            uploaded: art.uploaded_at.slice(0, 9),
+            uploaded: art.uploaded_at.slice(0, 10),
             orientation: art.width <= art.height ? 'portrait' : 'landscape',
             imageURL: art.url,
             description: this._generateDescription(art.tags)

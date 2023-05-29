@@ -1,13 +1,45 @@
-import React from 'react'
-import CardItem from 'components/card-item'
+import React, { Component } from 'react'
+import CardListItem from 'components/card-list-item'
+import { connect } from 'react-redux'
+import { withWaifuService } from 'helpers/hoc'
+import { artsLoaded } from 'store/actions'
+import compose from 'helpers/compose'
+import './card-list.css'
+class CardList extends Component {
+  
+  componentDidMount() {
+    const { waifuService } = this.props
+    waifuService.getManyArts().then((result) => {
+      this.props.artsLoaded(result)
+    })
+  }
 
-const CardList = () => {
-
-  return (
-    <div>
-        <CardItem/>
-    </div>
-  )
+  render() {
+    const { images } = this.props
+    console.log(images)
+    return (
+      <div className="card-list">
+        {
+          images.map(({id, ...other}) => {
+            return (
+              <span key={id} className="card-list-child"><CardListItem art={other}/></span>
+            )
+          })
+        }
+      </div>
+    )
+  }
 }
 
-export default CardList
+const mapStateToProps = ({ images }) => {
+  return { images }
+}
+
+const mapDispatchToProps = {
+    artsLoaded
+}
+
+export default compose(
+  withWaifuService(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(CardList)

@@ -1,0 +1,11 @@
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-list-child {
+    max-width: 440px;
+}
