@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-redux-artliker-app/static/css/main.4f41894b.css",
+    "main.js": "/react-redux-artliker-app/static/js/main.2121b809.js",
+    "index.html": "/react-redux-artliker-app/index.html",
+    "main.4f41894b.css.map": "/react-redux-artliker-app/static/css/main.4f41894b.css.map",
+    "main.2121b809.js.map": "/react-redux-artliker-app/static/js/main.2121b809.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4f41894b.css",
+    "static/js/main.2121b809.js"
+  ]
+}
