@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { withWaifuService } from 'helpers/hoc'
 import { artsLoaded } from 'store/actions'
 import compose from 'helpers/compose'
+import Spinner from 'components/spinner'
+import { BsYinYang } from 'react-icons/bs'
 import './card-list.css'
 class CardList extends Component {
   
@@ -15,14 +17,28 @@ class CardList extends Component {
   }
 
   render() {
-    const { images } = this.props
-    console.log(images)
+    const { images, loading,  doesShowOnlyLiked} = this.props
+    
+    if (loading) {
+      return <Spinner/>
+    }
+
+    const visibleCards = doesShowOnlyLiked ? images.filter(({ isLiked }) => isLiked === true) : images
+
+    if (visibleCards.length === 0) {
+      return (
+        <div className="alert alert-dismissible alert-primary alert-box">
+          <BsYinYang/> You didn't like any art yet.. That's why it's empty here
+        </div>
+      )
+    }
+
     return (
       <div className="card-list">
         {
-          images.map(({id, ...other}) => {
+          visibleCards.map((art) => {
             return (
-              <span key={id} className="card-list-child"><CardListItem art={other}/></span>
+              <span key={art.id} className="card-list-child"><CardListItem art={art}/></span>
             )
           })
         }
@@ -31,8 +47,8 @@ class CardList extends Component {
   }
 }
 
-const mapStateToProps = ({ images }) => {
-  return { images }
+const mapStateToProps = ({ images, loading, doesShowOnlyLiked }) => {
+  return { images, loading, doesShowOnlyLiked }
 }
 
 const mapDispatchToProps = {

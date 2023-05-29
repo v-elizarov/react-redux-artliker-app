@@ -4,11 +4,11 @@ import './spinner.css';
 
 const Spinner = () => {
   return (
-    <div className="lds-css">
-      <div className="lds-double-ring">
-        <div></div>
-        <div></div>
-      </div>
+    <div className="loadingio-spinner-ripple-x1ujg5atsl">
+        <div className="ldio-tehjdwml9w">
+            <div></div>
+            <div></div>
+        </div>
     </div>
   );
 };

@@ -9,3 +9,8 @@
 .card-list-child {
     max-width: 440px;
 }
+
+.alert-box {
+    width: 90%;
+    margin: 0 auto;
+}

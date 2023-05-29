@@ -14,7 +14,6 @@ export default class WaifuService {
                         is_nsfw: false
                     }
                 })
-                console.log(data)
             return data // .images
                 .map(this._transformArt)
         } catch (error) {
@@ -36,7 +35,8 @@ export default class WaifuService {
             uploaded: art.uploaded_at.slice(0, 10),
             orientation: art.width <= art.height ? 'portrait' : 'landscape',
             imageURL: art.url,
-            description: this._generateDescription(art.tags)
+            description: this._generateDescription(art.tags),
+            isLiked: false
         }
     }
 }

@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { BsHeartFill, BsHeart } from 'react-icons/bs'
+import { connect } from 'react-redux'
+import { filterChanged } from 'store/actions'
+class Filter extends Component {
+  render() {
+    const { doesShowOnlyLiked, filterChanged } = this.props
 
-const Filter = () => {
-
-    const status = false
-
-  return (
-    <div className="d-flex">
-        <input type="radio" className="btn-check" id="btnradio1" checked={status} onChange={() => {}}/>
-        <label className="btn btn-outline-primary btn-lg" htmlFor="btnradio1">
-            {!status ? <BsHeart/> : <BsHeartFill/>}
-        </label>
-    </div>
-  )
+    return (
+      <div className="d-flex">
+          <input type="radio" className="btn-check" id="btnradio1" checked={doesShowOnlyLiked} onClick={filterChanged} onChange={() => {}}/>
+          <label className="btn btn-outline-primary btn-lg" htmlFor="btnradio1">
+              {doesShowOnlyLiked ? <BsHeartFill/> : <BsHeart/>}
+          </label>
+      </div>
+    )
+  }
 }
 
-export default Filter
+const mapStateToProps = ({ doesShowOnlyLiked }) => {
+  return { doesShowOnlyLiked }
+}
+
+const mapDispatchToProps = {
+    filterChanged
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter)
